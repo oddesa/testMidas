@@ -1,5 +1,5 @@
 //
-//  AdminMainPageTableViewController.swift
+//  UserMainPageTableViewController.swift
 //  midasJayaTest
 //
 //  Created by Jehnsen Hirena Kane on 14/01/22.
@@ -7,17 +7,15 @@
 
 import UIKit
 
-class AdminMainPageTableViewController: UITableViewController {
-    var dataAdmin: [UserData] = []
+class UserMainPageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "AdminMainPageTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "AdminMainPageTableViewCell")
         
-        DataManager.emailUserData.values.map { data in
-            dataAdmin.append(data)
-        }
-        tableView.reloadData()
+        let nib = UINib(nibName: "UserTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "UserTableViewCell")
+        
+//        let nibTable = UINib(nibName: "ExplorListTableCell", bundle: nil)
+//        tableViewOutlet.register(nibTable, forCellReuseIdentifier: "ExplorListTableCell")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,18 +32,21 @@ class AdminMainPageTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataAdmin.count
+        print("ini dari user page\(DataManager.normalUserData.count)")
+        return DataManager.normalUserData.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AdminMainPageTableViewCell", for: indexPath) as! AdminMainPageTableViewCell
-        cell.idLabel.text = String(dataAdmin[indexPath.row].id)
-        cell.roleLabel.text = dataAdmin[indexPath.row].role
-        cell.usernameLabel.text = dataAdmin[indexPath.row].username
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as? UserTableViewCell else {
+            fatalError("invalid identifier")
+        }
+        let data = DataManager.normalUserData[indexPath.row]
+        cell.idLabel.text = String(data.id)
+        cell.urlLabel.text = String(data.url)
+        cell.titleLabel.text = String(data.title)
         return cell
     }
-
 
     /*
     // Override to support conditional editing of the table view.

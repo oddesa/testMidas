@@ -18,14 +18,13 @@ class APIRequest: NSObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: (response as? Data)!, options: .mutableContainers) as! NSArray
 
-                for item in json {
-                    let newData = item as! NSMutableDictionary
+                for i in 0...50 {
+                    let newData = json[i] as! NSMutableDictionary
                     dataModel.append(APIDataModel(albumId: newData["albumId"] as! Int,
                                                   id: newData["id"] as! Int,
                                                   title: newData["title"] as! String ,
                                                   url: newData["url"] as! String ,
                                                   thumbnailUrl: newData["thumbnailUrl"] as! String))
-                    
                 }
                 successCompletion(dataModel)
             } catch let error {

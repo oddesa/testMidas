@@ -26,7 +26,36 @@ class ViewController: UIViewController {
             } else {
                 if DataManager.emailUserData[email] != nil {
                     if DataManager.emailUserData[email]?.password == password {
-                        print("berhasil login")
+                        
+                        if DataManager.emailUserData[email]?.role == "normal user" {
+                            
+                            APIRequest.fetchData { response in
+                                print(response)
+                                DataManager.normalUserData = response as! [APIDataModel]
+                                
+                                
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: "Berhasil login", message: "Selamat anda berhasil login", preferredStyle: .alert)
+                                    
+                                    let cancelButton = UIAlertAction(title: "Close", style: .destructive, handler: nil)
+                                    alert.addAction(cancelButton)
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    self.navigationController?.pushViewController(UserMainPageTableViewController(), animated: true)
+                                }
+                            
+                            } failCompletion: { error in
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                self.navigationController?.pushViewController(AdminMainPageTableViewController(), animated: true)
+                            }
+                        }
+                        
+                        
                     } else {
                         self.showAlert(title: "Password salah", msg: "Password yang anda masukan kurang tepat, tolong ketik ulang password anda")
                     }
