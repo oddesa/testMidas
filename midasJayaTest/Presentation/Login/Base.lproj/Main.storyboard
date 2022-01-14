@@ -20,6 +20,9 @@
                                 <rect key="frame" x="174" y="549" width="67" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Masuk"/>
+                                <connections>
+                                    <action selector="masukPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z0S-zf-uh1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtk-D6-srB">
                                 <rect key="frame" x="168.5" y="270" width="77" height="39"/>
@@ -84,6 +87,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cR3-ed-quh"/>
+                    <connections>
+                        <outlet property="emailTxtFld" destination="dM9-WA-NRn" id="WJB-FD-Rgi"/>
+                        <outlet property="passwordTxtFld" destination="wGT-PP-Ujm" id="0NQ-pu-UJG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,6 +153,9 @@
                                 <rect key="frame" x="174.5" y="634" width="65" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Daftar"/>
+                                <connections>
+                                    <action selector="daftarPressed:" destination="ct9-Vz-Twn" eventType="touchUpInside" id="tHE-Wb-YRX"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Admin / Normal User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWz-2S-Qrx">
                                 <rect key="frame" x="64" y="560" width="286" height="34"/>
@@ -190,6 +200,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qj7-q9-bLf"/>
+                    <connections>
+                        <outlet property="emailTxtFld" destination="dbI-8Q-VG1" id="t6k-dt-c1a"/>
+                        <outlet property="passwordTxtFld" destination="FcR-Ea-ryZ" id="Vxl-DO-YuW"/>
+                        <outlet property="roleTxtFld" destination="mWz-2S-Qrx" id="gcB-Jd-fG6"/>
+                        <outlet property="usernameTxtFld" destination="fcM-J9-tdi" id="14f-w0-cRv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mq0-lZ-K8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
